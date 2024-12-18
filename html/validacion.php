@@ -13,6 +13,14 @@ if (!empty($usuario) && !empty($pass)) {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['id_rol'] = $result["id_rol"];
             header("location: html/vistaAdmin.php");
+            exit();
+        }elseif (($result["usuario"] == $usuario)&&($result["contrasena"] == $pass)&&($result["id_rol"] == 2)) {
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['id_rol'] = $result["id_rol"];
+            header("location: html/vistaUsuario.php");
+            exit();
+        } else {
+            header("location: html/login.php?error=1");
         }
     }
 

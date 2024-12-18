@@ -36,6 +36,11 @@
                                 <h2 class="fw-bold mb-4">Login</h2>
                                 
                             </div>
+                            <?php
+                                if(isset($_GET['error']) && $_GET['error'] == 1){
+                                    echo "<p style='color:red;'>Credenciales incorrectas</p>";
+                                }
+                            ?>
 
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
@@ -48,7 +53,7 @@
                                 <input type="password" id="form3Example4" class="form-control form-control-lg" name="pass" required>
                                 <label class="form-label" for="form3Example4">Contraseña</label>
                             </div>
-
+                            
 
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" data-mdb-ripple-init class="btn btn-primary btn-lg"
