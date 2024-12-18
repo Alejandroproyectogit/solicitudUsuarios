@@ -3,34 +3,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Iniciar la sesión
-session_start();
 
 // Establecer la cabecera JSON
 header('Content-Type: application/json; charset=utf-8');
 
 // Conectar con la base de datos
 require "../../conexion/conexion.php";
-if (!$con) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Error de conexión a la base de datos'
-    ], JSON_UNESCAPED_UNICODE);
-    exit();
-}
 
-// Obtener la entrada JSON
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
 
-// Validar la entrada
-if (json_last_error() !== JSON_ERROR_NONE) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Error al decodificar la entrada JSON: ' . json_last_error_msg()
-    ], JSON_UNESCAPED_UNICODE);
-    exit();
-}
 
 $usuario = $data["usuario"] ?? '';
 $pass = $data["pass"] ?? '';
